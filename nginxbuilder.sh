@@ -227,9 +227,9 @@ case $OPTION in
         cd /usr/local/src
         # Cleaning up in case of update
 		rm -r naxsi-* 2>> /tmp/nginx-autoinstall-error.log 1>> /tmp/nginx-autoinstall-output.log 
-        wget https://github.com/nbs-system/naxsi/archive/0.55.3.tar.gz
-        tar xaf v${NAXSI_VER}.tar.gz
-        rm v${NAXSI_VER}.tar.gz
+        wget https://github.com/nbs-system/naxsi/archive/0.55.3.tar.gz 2>> /tmp/nginx-autoinstall-error.log 1>> /tmp/nginx-autoinstall-output.log
+        tar xaf ${NAXSI_VER}.tar.gz
+        rm ${NAXSI_VER}.tar.gz
 
         if [ $? -eq 0 ]; then
             echo -e "       Downloading naxsi   [${CGREEN}OK${CEND}]\r"
