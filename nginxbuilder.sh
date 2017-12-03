@@ -267,6 +267,13 @@ case $OPTION in
 			wget https://raw.githubusercontent.com/nagug/Kaapi-nginx/master/nginx.conf 2>> /tmp/nginx-autoinstall-error.log 1>> /tmp/nginx-autoinstall-output.log
 		fi
 
+         # We need naxsi core rules here
+        if [[ ! -e /etc/nginx/naxsi_core.rules ]]; then
+			mkdir -p /etc/nginx
+			cd /etc/nginx
+			wget https://raw.githubusercontent.com/nagug/Kaapi-nginx/master/naxsi_core.rules 2>> /tmp/nginx-autoinstall-error.log 1>> /tmp/nginx-autoinstall-output.log
+		fi
+
         cd /usr/local/src/nginx-${NGINX_VER}
 
         # Modules configuration
@@ -411,7 +418,7 @@ case $OPTION in
         mkdir -p /var/www/default
         mkdir -p /var/www/default/htdocs
         touch /var/www/default/htdocs/index.html
-        
+
 		# We're done !
 		echo ""
 		echo -ne "       ${CGREEN}Installation successful !${CEND}"
