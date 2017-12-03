@@ -19,6 +19,7 @@ Modified & customised version of [Angristan nginx-autoinstall](https://github.co
 ## Installation
 Just download and execute the script :
 ```
+wget https://raw.githubusercontent.com/nagug/Kaapi-nginx/master/nginxbuilder.sh
 chmod +x nginxbuilder.sh
 ./nginx-autoinstall.sh
 ```

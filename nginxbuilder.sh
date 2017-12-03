@@ -276,6 +276,12 @@ case $OPTION in
 		fi
        
         # We need nginx conf here new
+        if [[ ! -e /etc/nginx/nginx.conf ]]; then
+			mkdir -p /etc/nginx
+			cd /etc/nginx
+			wget https://raw.githubusercontent.com/nagug/Kaapi-nginx/master/nginx.conf 2>> /tmp/nginx-autoinstall-error.log 1>> /tmp/nginx-autoinstall-output.log
+		fi
+
         cd /usr/local/src/nginx-${NGINX_VER}
 
         # Modules configuration
