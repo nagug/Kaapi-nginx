@@ -406,7 +406,11 @@ case $OPTION in
 			echo ""
 			exit 1
 		fi
-
+        touch /var/log/default.access.log;
+        mkdir /var/www
+        mkdir /var/www/default
+        mkdir /var/www/default/htdocs
+        mkdir /var/www/default/htdocs/index.html
 		# We're done !
 		echo ""
 		echo -ne "       ${CGREEN}Installation successful !${CEND}"
