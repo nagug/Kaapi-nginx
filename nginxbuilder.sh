@@ -58,7 +58,7 @@ case $OPTION in
         #Cleaning up in case of an update
         rm -r ngx_pagespeed-*-stable 2>> /tmp/nginx-autoinstall-error.log 1>> /tmp/nginx-autoinstall-output.log 
         # Download and extract of PageSpeed module
-        echo -ne "       Downloading ngx_pagespeed      [..]\r"
+        echo -e "       Downloading ngx_pagespeed      [..]\r"
         wget https://github.com/pagespeed/ngx_pagespeed/archive/v${NPS_VER}-stable.zip 2>> /tmp/nginx-autoinstall-error.log 1>> /tmp/nginx-autoinstall-output.log
         unzip v${NPS_VER}-stable.zip 2>> /tmp/nginx-autoinstall-error.log 1>> /tmp/nginx-autoinstall-output.log
         rm v${NPS_VER}-stable.zip
@@ -69,8 +69,8 @@ case $OPTION in
         tar -xzvf $(basename ${psol_url}) 2>> /tmp/nginx-autoinstall-error.log 1>> /tmp/nginx-autoinstall-output.log
         rm $(basename ${psol_url})
         if [ $? -eq 0 ]; then
-			echo -ne "       Downloading ngx_pagespeed      [${CGREEN}OK${CEND}]\r"
-			echo -ne "\n"
+			echo -e "       Downloading ngx_pagespeed      [${CGREEN}OK${CEND}]\r"
+			echo -e "\n"
 		else
 			echo -e "       Downloading ngx_pagespeed      [${CRED}FAIL${CEND}]"
 			echo ""
@@ -81,11 +81,11 @@ case $OPTION in
         #Download Brotli
         # Cleaning up in case of update
 		rm -r libbrotli 2>> /tmp/nginx-autoinstall-error.log 1>> /tmp/nginx-autoinstall-output.log
-        echo -ne "       Downloading libbrotli          [..]\r"
+        echo -e "       Downloading libbrotli          [..]\r"
         git clone https://github.com/bagder/libbrotli 2>> /tmp/nginx-autoinstall-error.log 1>> /tmp/nginx-autoinstall-output.log
         if [ $? -eq 0 ]; then
 			echo -e "       Downloading libbrotli          [${CGREEN}OK${CEND}]\r"
-			echo -ne "\n"
+			echo -e "\n"
 		else
 			echo -e "       Downloading libbrotli          [${CRED}FAIL${CEND}]"
 			echo ""
@@ -94,12 +94,12 @@ case $OPTION in
 			exit 1
 		fi
         cd libbrotli
-        echo -ne "       Configuring libbrotli          [..]\r"
+        echo -e "       Configuring libbrotli          [..]\r"
         ./autogen.sh 2>> /tmp/nginx-autoinstall-error.log 1>> /tmp/nginx-autoinstall-output.log
         ./configure 2>> /tmp/nginx-autoinstall-error.log 1>> /tmp/nginx-autoinstall-output.log
         if [ $? -eq 0 ]; then
-			echo -ne "       Configuring libbrotli          [${CGREEN}OK${CEND}]\r"
-			echo -ne "\n"
+			echo -e "       Configuring libbrotli          [${CGREEN}OK${CEND}]\r"
+			echo -e "\n"
 		else
 			echo -e "       Configuring libbrotli          [${CRED}FAIL${CEND}]"
 			echo ""
@@ -107,11 +107,11 @@ case $OPTION in
 			echo ""
 			exit 1
 		fi
-        echo -ne "       Compiling libbrotli            [..]\r"
+        echo -e "       Compiling libbrotli            [..]\r"
         make -j $(nproc) 2>> /tmp/nginx-autoinstall-error.log 1>> /tmp/nginx-autoinstall-output.log
         if [ $? -eq 0 ]; then
-			echo -ne "       Compiling libbrotli            [${CGREEN}OK${CEND}]\r"
-			echo -ne "\n"
+			echo -e "       Compiling libbrotli            [${CGREEN}OK${CEND}]\r"
+			echo -e "\n"
 		else
             echo -e "       Compiling libbrotli            [${CRED}FAIL${CEND}]"
             echo ""
@@ -121,11 +121,11 @@ case $OPTION in
 		fi
         
         # libbrotli install
-        echo -ne "       Installing libbrotli           [..]\r"
+        echo -e "       Installing libbrotli           [..]\r"
         make install 2>> /tmp/nginx-autoinstall-error.log 1>> /tmp/nginx-autoinstall-output.log
         if [ $? -eq 0 ]; then
-            echo -ne "       Installing libbrotli           [${CGREEN}OK${CEND}]\r"
-            echo -ne "\n"
+            echo -e "       Installing libbrotli           [${CGREEN}OK${CEND}]\r"
+            echo -e "\n"
         else
             echo -e "       Installing libbrotli           [${CRED}FAIL${CEND}]"
             echo ""
@@ -140,13 +140,13 @@ case $OPTION in
         # ngx_brotli module download
         cd /usr/local/src
         rm -r ngx_brotli 2>> /tmp/nginx-autoinstall-error.log 1>> /tmp/nginx-autoinstall-output.log 
-        echo -ne "       Downloading ngx_brotli         [..]\r"
+        echo -e "       Downloading ngx_brotli         [..]\r"
         git clone https://github.com/google/ngx_brotli 2>> /tmp/nginx-autoinstall-error.log 1>> /tmp/nginx-autoinstall-output.log
         cd ngx_brotli
         git submodule update --init 2>> /tmp/nginx-autoinstall-error.log 1>> /tmp/nginx-autoinstall-output.log
         if [ $? -eq 0 ]; then
-            echo -ne "       Downloading ngx_brotli         [${CGREEN}OK${CEND}]\r"
-            echo -ne "\n"
+            echo -e "       Downloading ngx_brotli         [${CGREEN}OK${CEND}]\r"
+            echo -e "\n"
         else
             echo -e "       Downloading ngx_brotli         [${CRED}FAIL${CEND}]"
             echo ""
@@ -159,13 +159,13 @@ case $OPTION in
         cd /usr/local/src
         # Cleaning up in case of update
         rm -r headers-more-nginx-module-* 2>> /tmp/nginx-autoinstall-error.log 1>> /tmp/nginx-autoinstall-output.log
-        echo -ne "       Downloading ngx_headers_more   [..]\r"
+        echo -e "       Downloading ngx_headers_more   [..]\r"
         wget https://github.com/openresty/headers-more-nginx-module/archive/v${HEADERMOD_VER}.tar.gz 2>> /tmp/nginx-autoinstall-error.log 1>> /tmp/nginx-autoinstall-output.log
         tar xaf v${HEADERMOD_VER}.tar.gz
         rm v${HEADERMOD_VER}.tar.gz
         if [ $? -eq 0 ]; then
-            echo -ne "       Downloading ngx_headers_more   [${CGREEN}OK${CEND}]\r"
-            echo -ne "\n"
+            echo -e "       Downloading ngx_headers_more   [${CGREEN}OK${CEND}]\r"
+            echo -e "\n"
         else
             echo -e "       Downloading ngx_headers_more   [${CRED}FAIL${CEND}]"
             echo ""
@@ -180,11 +180,11 @@ case $OPTION in
 		rm -r libressl-* 2>> /tmp/nginx-autoinstall-error.log 1>> /tmp/nginx-autoinstall-output.log 
         mkdir libressl-${LIBRESSL_VER}
         cd libressl-${LIBRESSL_VER}
-        echo -ne "       Downloading LibreSSL           [..]\r"
+        echo -e "       Downloading LibreSSL           [..]\r"
         wget -qO- http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${LIBRESSL_VER}.tar.gz | tar xz --strip 1
         if [ $? -eq 0 ]; then
-            echo -ne "       Downloading LibreSSL           [${CGREEN}OK${CEND}]\r"
-            echo -ne "\n"
+            echo -e "       Downloading LibreSSL           [${CGREEN}OK${CEND}]\r"
+            echo -e "\n"
         else
             echo -e "       Downloading LibreSSL           [${CRED}FAIL${CEND}]"
             echo ""
@@ -193,15 +193,15 @@ case $OPTION in
             exit 1
         fi
 
-        echo -ne "       Configuring LibreSSL           [..]\r"
+        echo -e "       Configuring LibreSSL           [..]\r"
         ./configure \
             LDFLAGS=-lrt \
             CFLAGS=-fstack-protector-strong \
             --prefix=/usr/local/src/libressl-${LIBRESSL_VER}/.openssl/ \
             --enable-shared=no 2>> /tmp/nginx-autoinstall-error.log 1>> /tmp/nginx-autoinstall-output.log
         if [ $? -eq 0 ]; then
-            echo -ne "       Configuring LibreSSL           [${CGREEN}OK${CEND}]\r"
-            echo -ne "\n"
+            echo -e "       Configuring LibreSSL           [${CGREEN}OK${CEND}]\r"
+            echo -e "\n"
         else
             echo -e "       Configuring LibreSSL         [${CRED}FAIL${CEND}]"
             echo ""
@@ -209,12 +209,12 @@ case $OPTION in
             echo ""
             exit 1
         fi
-        echo -ne "       Installing LibreSSL            [..]\r"
+        echo -e "       Installing LibreSSL            [..]\r"
         make install-strip -j $(nproc) 2>> /tmp/nginx-autoinstall-error.log 1>> /tmp/nginx-autoinstall-output.log
 
         if [ $? -eq 0 ]; then
-            echo -ne "       Installing LibreSSL            [${CGREEN}OK${CEND}]\r"
-            echo -ne "\n"
+            echo -e "       Installing LibreSSL            [${CGREEN}OK${CEND}]\r"
+            echo -e "\n"
         else
             echo -e "       Installing LibreSSL            [${CRED}FAIL${CEND}]"
             echo ""
@@ -232,8 +232,8 @@ case $OPTION in
         rm v${NAXSI_VER}.tar.gz
 
         if [ $? -eq 0 ]; then
-            echo -ne "       Downloading naxsi   [${CGREEN}OK${CEND}]\r"
-            echo -ne "\n"
+            echo -e "       Downloading naxsi   [${CGREEN}OK${CEND}]\r"
+            echo -e "\n"
         else
             echo -e "       Downloading naxsi   [${CRED}FAIL${CEND}]"
             echo ""
@@ -243,12 +243,12 @@ case $OPTION in
         fi
 
         # Cloudflare's TLS Dynamic Record Resizing patch
-        echo -ne "       TLS Dynamic Records support    [..]\r"
+        echo -e "       TLS Dynamic Records support    [..]\r"
         wget https://raw.githubusercontent.com/cloudflare/sslconfig/master/patches/nginx__1.11.5_dynamic_tls_records.patch 2>> /tmp/nginx-autoinstall-error.log 1>> /tmp/nginx-autoinstall-output.log
         patch -p1 < nginx__1.11.5_dynamic_tls_records.patch 2>> /tmp/nginx-autoinstall-error.log 1>> /tmp/nginx-autoinstall-output.log
         if [ $? -eq 0 ]; then
-            echo -ne "       TLS Dynamic Records support    [${CGREEN}OK${CEND}]\r"
-            echo -ne "\n"
+            echo -e "       TLS Dynamic Records support    [${CGREEN}OK${CEND}]\r"
+            echo -e "\n"
         else
             echo -e "       TLS Dynamic Records support    [${CRED}FAIL${CEND}]"
             echo ""
@@ -260,13 +260,13 @@ case $OPTION in
         #Installing Nginx now
         rm -r /usr/local/src/nginx-* 2>> /tmp/nginx-autoinstall-error.log 1>> /tmp/nginx-autoinstall-output.log
         cd /usr/local/src/
-        echo -ne "       Downloading Nginx              [..]\r"
+        echo -e "       Downloading Nginx              [..]\r"
         wget -qO- http://nginx.org/download/nginx-${NGINX_VER}.tar.gz | tar zxf -
         cd nginx-${NGINX_VER}
 
         if [ $? -eq 0 ]; then
-			echo -ne "       Downloading Nginx              [${CGREEN}OK${CEND}]\r"
-			echo -ne "\n"
+			echo -e "       Downloading Nginx              [${CGREEN}OK${CEND}]\r"
+			echo -e "\n"
 		else
 			echo -e "       Downloading Nginx              [${CRED}FAIL${CEND}]"
 			echo ""
@@ -326,12 +326,12 @@ case $OPTION in
         NGINX_MODULES=$(echo $NGINX_MODULES; echo "--add-module=/usr/local/src/naxsi-${NAXSI_VER}/naxsi_src/")
 
         # Configuring Nginx
-        echo -ne "       Configuring Nginx              [..]\r"
+        echo -e "       Configuring Nginx              [..]\r"
         ./configure $NGINX_OPTIONS $NGINX_MODULES 2>> /tmp/nginx-autoinstall-error.log 1>> /tmp/nginx-autoinstall-output.log
 
         if [ $? -eq 0 ]; then
-			echo -ne "       Configuring Nginx              [${CGREEN}OK${CEND}]\r"
-			echo -ne "\n"
+			echo -e "       Configuring Nginx              [${CGREEN}OK${CEND}]\r"
+			echo -e "\n"
 		else
 			echo -e "       Configuring Nginx              [${CRED}FAIL${CEND}]"
 			echo ""
@@ -341,12 +341,12 @@ case $OPTION in
 		fi
 
         #Compiling Nginx
-		echo -ne "       Compiling Nginx                [..]\r"
+		echo -e "       Compiling Nginx                [..]\r"
 		make -j $(nproc) 2>> /tmp/nginx-autoinstall-error.log 1>> /tmp/nginx-autoinstall-output.log
 
 		if [ $? -eq 0 ]; then
-			echo -ne "       Compiling Nginx                [${CGREEN}OK${CEND}]\r"
-			echo -ne "\n"
+			echo -e "       Compiling Nginx                [${CGREEN}OK${CEND}]\r"
+			echo -e "\n"
 		else
 			echo -e "       Compiling Nginx                [${CRED}FAIL${CEND}]"
 			echo ""
@@ -356,15 +356,15 @@ case $OPTION in
 		fi
 
         #Installing nginx
-        echo -ne "       Installing Nginx               [..]\r"
+        echo -e "       Installing Nginx               [..]\r"
         make install 2>> /tmp/nginx-autoinstall-error.log 1>> /tmp/nginx-autoinstall-output.log
 
 
         # cleanup debugging symbols
         strip -s /usr/sbin/nginx
         if [ $? -eq 0 ]; then
-			echo -ne "       Installing Nginx               [${CGREEN}OK${CEND}]\r"
-			echo -ne "\n"
+			echo -e "       Installing Nginx               [${CGREEN}OK${CEND}]\r"
+			echo -e "\n"
 		else
 			echo -e "       Installing Nginx               [${CRED}FAIL${CEND}]"
 			echo ""
@@ -393,12 +393,12 @@ case $OPTION in
 		fi
 
 		# Restart Nginx
-		echo -ne "       Restarting Nginx               [..]\r"
+		echo -e "       Restarting Nginx               [..]\r"
 		systemctl restart nginx 2>> /tmp/nginx-autoinstall-error.log 1>> /tmp/nginx-autoinstall-output.log
 
 		if [ $? -eq 0 ]; then
-			echo -ne "       Restarting Nginx               [${CGREEN}OK${CEND}]\r"
-			echo -ne "\n"
+			echo -e "       Restarting Nginx               [${CGREEN}OK${CEND}]\r"
+			echo -e "\n"
 		else
 			echo -e "       Restarting Nginx               [${CRED}FAIL${CEND}]"
 			echo ""
