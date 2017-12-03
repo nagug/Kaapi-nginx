@@ -21,7 +21,7 @@ HEADERMOD_VER=0.33
 NAXSI_VER=0.55.3
 
 # Clear log files
-echo "" > 
+echo "" > /tmp/nginx-autoinstall-output.log
 echo "" > /tmp/nginx-autoinstall-error.log
 
 echo "This will build the following"
