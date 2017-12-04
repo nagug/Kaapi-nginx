@@ -35,7 +35,7 @@ echo "   1) Continue.."
 echo "   2) Update"
 echo "   3) Exit"
 
-while [[ $OPTION !=  "1" && $OPTION != "2" ]]; do
+while [[ $OPTION !=  "1" && $OPTION != "3" ]]; do
 	read -p "Select an option [1-2]: " OPTION
 done
 case $OPTION in
