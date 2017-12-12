@@ -418,6 +418,8 @@ case $OPTION in
         mkdir -p /var/www/default
         mkdir -p /var/www/default/htdocs
         touch /var/www/default/htdocs/index.html
+        mkdir -p  /etc/nginx/sites-enabled
+        mkdir -p  /etc/nginx/sites-available
 
 		# We're done !
 		echo ""
