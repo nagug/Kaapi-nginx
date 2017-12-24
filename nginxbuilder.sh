@@ -19,7 +19,7 @@ LIBRESSL_VER=2.6.3
 OPENSSL_VER=1.1.0g
 NPS_VER=1.12.34.3
 HEADERMOD_VER=0.33
-NAXSI_VER=0.55.3
+NAXSI_VER=0.56rc1
 
 # Clear log files
 echo "" > /tmp/nginx-autoinstall-output.log
@@ -228,12 +228,12 @@ case $OPTION in
         # Cleaning up in case of update
 	rm -r naxsi-* 2>> /tmp/nginx-autoinstall-error.log 1>> /tmp/nginx-autoinstall-output.log
 	echo -ne "       Installing  Naxsi           [..]\r"
-	wget https://github.com/nbs-system/naxsi/archive/0.55.3.tar.gz 2>> /tmp/nginx-autoinstall-error.log 1>> /tmp/nginx-autoinstall-output.log
+	wget https://github.com/nbs-system/naxsi/archive/${NAXSI_VER}.tar.gz 2>> /tmp/nginx-autoinstall-error.log 1>> /tmp/nginx-autoinstall-output.log
         tar xaf ${NAXSI_VER}.tar.gz
         rm ${NAXSI_VER}.tar.gz
 
         if [ $? -eq 0 ]; then
-	    echo -ne "       Downloading Nginx              [${CGREEN}OK${CEND}]\r"
+	    echo -ne "       Downloading Naxsi              [${CGREEN}OK${CEND}]\r"
             echo -ne "\n"
         else
             echo -e "       Downloading naxsi 		    [${CRED}FAIL${CEND}]"
