@@ -14,12 +14,12 @@ if [[ "$EUID" -ne 0 ]]; then
 fi
 
 # Software versions
-NGINX_VER=1.13.7
-LIBRESSL_VER=2.6.3
-OPENSSL_VER=1.1.0g
-NPS_VER=1.12.34.3
+NGINX_VER=1.19.1
+LIBRESSL_VER=3.1.3
+OPENSSL_VER=1.1.1g
+NPS_VER=1.13.35.2
 HEADERMOD_VER=0.33
-NAXSI_VER=0.56rc1
+NAXSI_VER=0.56
 
 # Clear log files
 echo "" > /tmp/nginx-autoinstall-output.log
@@ -59,7 +59,7 @@ case $OPTION in
         rm -r ngx_pagespeed-*-stable 2>> /tmp/nginx-autoinstall-error.log 1>> /tmp/nginx-autoinstall-output.log 
         # Download and extract of PageSpeed module
         echo -ne "       Downloading ngx_pagespeed      [..]\r"
-        wget https://github.com/pagespeed/ngx_pagespeed/archive/v${NPS_VER}-stable.zip 2>> /tmp/nginx-autoinstall-error.log 1>> /tmp/nginx-autoinstall-output.log
+        wget https://github.com/apache/incubator-pagespeed-ngx/archive/v${NPS_VER}-stable.zip 2>> /tmp/nginx-autoinstall-error.log 1>> /tmp/nginx-autoinstall-output.log
         unzip v${NPS_VER}-stable.zip 2>> /tmp/nginx-autoinstall-error.log 1>> /tmp/nginx-autoinstall-output.log
         rm v${NPS_VER}-stable.zip
         cd ngx_pagespeed-${NPS_VER}-stable
